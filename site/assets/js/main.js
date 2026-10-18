@@ -83,8 +83,12 @@
   if (quiz) {
     const items = [...quiz.querySelectorAll('[data-q]')];
     const out = quiz.querySelector('[data-quiz-out]');
+    const house = document.querySelector('[data-house]');
+    const parts = house ? [...house.querySelectorAll('.hp')] : [];
     const render = () => {
       const known = items.filter(i => i.getAttribute('aria-pressed') === 'true').length;
+      parts.forEach((p, n) => p.classList.toggle('on', n < known));
+      if (house) house.classList.toggle('done', known === items.length);
       const left = items.length - known;
       out.innerHTML = left === 0
         ? '<b>Le știi pe toate 7.</b> Nu ai nevoie de informațiile oferite. Trimite cursul cuiva care își face casă.'
@@ -134,6 +138,23 @@
       st.addEventListener('mouseenter', on); st.addEventListener('focus', on);
       st.addEventListener('mouseleave', off); st.addEventListener('blur', off);
     });
+  }
+
+  /* banda de cuvinte: se mișcă doar cât derulezi */
+  const bands = [...document.querySelectorAll('[data-words]')];
+  if (bands.length && !reduce) {
+    let busy = false;
+    const move = () => {
+      busy = false;
+      bands.forEach(band => {
+        const r = band.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > innerHeight) return;
+        const x = (innerHeight - r.top) * 0.45;
+        band.firstElementChild.style.transform = `translate3d(${-x - 120}px,0,0)`;
+      });
+    };
+    addEventListener('scroll', () => { if (!busy) { busy = true; requestAnimationFrame(move); } }, { passive: true });
+    move();
   }
 
   /* minicurs · distribuie pe WhatsApp cu linkul paginii */
