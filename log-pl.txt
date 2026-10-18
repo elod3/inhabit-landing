@@ -1,0 +1,7 @@
+sitemap: 0 URL-uri din 3 fișiere încercate
+[1/20] https://planificator.inhabitstudio.ro/
+  verificare JS: 8315 caractere în HTML, 16491 după randare
+[2/20] https://planificator.inhabitstudio.ro/termeni.html
+[3/20] https://planificator.inhabitstudio.ro/confidentialitate.html
+gata: 3 pagini, 11 imagini, 66 culori, 7 declarații de font, 0 erori → preluat/planificator/
+⚠ 1 pagini par randate cu JS: rulează din nou cu --js
