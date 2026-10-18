@@ -1,3 +1,5 @@
+**Previzualizare:** https://elod3.github.io/inhabit-landing/ · minicurs: https://elod3.github.io/inhabit-landing/minicurs.html
+
 # Inhabit Studio — landing + minicurs (local)
 
 Local: `cd site && python3 -m http.server 8765` → http://localhost:8765/
