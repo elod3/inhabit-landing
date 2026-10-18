@@ -196,6 +196,9 @@ h1, h2, h3 { text-wrap: balance; }
   line-height: .92;
 }
 .hero h1 .b { color: var(--yellow); }
+.hero h1 > span, .mc-hero h1 > span { display: inline-block; animation: line-in 1.1s var(--ease-out) backwards; }
+.hero h1 > span + span, .mc-hero h1 > span + span { animation-delay: .18s; }
+@keyframes line-in { from { opacity: 0; transform: translateY(.35em); filter: blur(6px); } }
 .hero__tag {
   margin-top: 1.6rem;
   font-size: clamp(1.05rem, .9rem + .9vw, 1.6rem); font-weight: 500; letter-spacing: -.02em;
@@ -550,7 +553,22 @@ h1, h2, h3 { text-wrap: balance; }
 .cartus__who b { color: var(--ink); font-weight: 600; }
 
 /* testul cu 7 întrebări */
-.quiz { margin-top: clamp(2.5rem, 5vw, 4rem); display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 340px); gap: clamp(1.5rem, 4vw, 4rem); align-items: start; }
+.quiz { margin-top: clamp(2.5rem, 5vw, 4rem); display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 340px); grid-template-areas: "list live" "list form"; gap: 1rem clamp(1.5rem, 4vw, 4rem); align-items: start; }
+.quiz__list { grid-area: list; }
+.quiz__side { grid-area: form; }
+.quiz__live { grid-area: live; position: sticky; top: 1.5rem; z-index: 3; background: var(--bg-2); border: 1px solid var(--line); border-radius: 24px; padding: 1.2rem 1.5rem 1.4rem; }
+
+/* casa din test: fiecare „știu” mai pune o bucată */
+.house { width: 100%; height: auto; overflow: visible; }
+.house__ground { stroke: var(--ink-3); stroke-width: 2; stroke-dasharray: 4 6; }
+.house .hp, .house .hp * { fill: var(--bg-3); stroke: var(--ink); stroke-width: 2.5; stroke-linejoin: round; }
+.house .hp { opacity: 0; transform: translateY(-26px) scale(.96); transform-box: fill-box; transform-origin: 50% 100%; transition: opacity .25s, transform .6s cubic-bezier(.34, 1.56, .64, 1); }
+.house .hp.on { opacity: 1; transform: none; }
+.house__sun polygon { fill: var(--yellow-dk) !important; stroke: var(--yellow) !important; }
+.house__tree circle { fill: rgba(226, 176, 23, .12) !important; stroke: var(--ink-2) !important; }
+.house.done .house__win rect { fill: var(--yellow); stroke: var(--yellow-lt); filter: drop-shadow(0 0 10px rgba(226, 176, 23, .8)); transition: fill .6s .3s, filter .6s .3s; }
+.house.done { animation: house-joy .7s cubic-bezier(.34, 1.56, .64, 1) .2s; transform-origin: 50% 100%; }
+@keyframes house-joy { 40% { transform: scale(1.04, .96); } 70% { transform: scale(.98, 1.03); } }
 .quiz__list { border-top: 1px solid var(--line); counter-reset: q; }
 .quiz__q {
   width: 100%; display: grid; grid-template-columns: 2.4rem minmax(0, 1fr) auto; gap: 1rem; align-items: center;
@@ -567,14 +585,19 @@ h1, h2, h3 { text-wrap: balance; }
 .quiz__q:hover i { border-color: var(--yellow); color: var(--yellow); }
 .quiz__q[aria-pressed="true"] span { color: var(--ink-3); text-decoration: line-through; text-decoration-color: var(--ink-3); }
 .quiz__q[aria-pressed="true"] i { background: var(--yellow); border-color: var(--yellow); color: var(--on-lit); }
-.quiz__side { position: sticky; top: 2rem; background: var(--bg-2); border: 1px solid var(--line); border-radius: 24px; padding: 1.5rem; }
-.quiz__out { font-size: 1rem; color: var(--ink-2); min-height: 4.8em; }
+.quiz__side { background: var(--bg-2); border: 1px solid var(--line); border-radius: 24px; padding: 1.5rem; }
+.quiz__out { font-size: .95rem; color: var(--ink-2); min-height: 4.4em; margin-top: .8rem; }
 .quiz__out b { display: block; color: var(--ink); font-size: 1.5rem; font-weight: 800; letter-spacing: -.04em; margin-bottom: .4rem; }
-.quiz__side .signup { margin-top: 1.2rem; }
+.quiz__side .signup { margin-top: 0; }
 .quiz__side .signup__row { flex-direction: column; border-radius: 18px; padding: .5rem; }
 .quiz__side .signup input { padding: .8rem .9rem; }
 .quiz__side .signup .btn { width: 100%; }
-@media (max-width: 860px) { .quiz { grid-template-columns: minmax(0, 1fr); } .quiz__side { position: static; } }
+@media (max-width: 860px) {
+  .quiz { grid-template-columns: minmax(0, 1fr); grid-template-areas: "live" "list" "form"; }
+  .quiz__live { top: .5rem; display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 1rem; align-items: center; padding: .8rem 1rem; box-shadow: 0 20px 40px -20px rgba(0, 0, 0, .9); }
+  .quiz__out { margin-top: 0; min-height: 0; font-size: .85rem; }
+  .quiz__out b { font-size: 1.15rem; }
+}
 
 /* lecțiile, pe etape */
 .lessons { margin-top: clamp(2.5rem, 5vw, 4rem); width: 100%; border-collapse: collapse; }
@@ -617,6 +640,17 @@ h1, h2, h3 { text-wrap: balance; }
   .stages { grid-template-columns: 1fr; }
   .strip { grid-template-columns: repeat(11, minmax(0, 1fr)); }
 }
+
+.js .strip:not(.is-in) li { opacity: 0; }
+.strip.is-in li { animation: cell-in .55s var(--ease-out) backwards; animation-delay: calc(var(--i) * 45ms); }
+@keyframes cell-in { from { opacity: 0; transform: translateY(18px) scale(.9); } }
+
+/* banda de cuvinte: alunecă odată cu scrollul */
+.words { overflow: hidden; padding: clamp(1.5rem, 3vw, 2.5rem) 0; border-block: 1px solid var(--line); }
+.words__track { display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.6rem); width: max-content; will-change: transform; }
+.words span { font-size: clamp(2.6rem, 1.4rem + 5vw, 6.4rem); font-weight: 800; letter-spacing: -.045em; line-height: 1; white-space: nowrap; }
+.words .o { color: transparent; -webkit-text-stroke: 1.5px var(--ink-3); }
+.words img { width: clamp(22px, 1rem + 1.4vw, 40px); height: auto; flex-shrink: 0; }
 
 /* comparațiile din economii */
 .cmp { display: grid; gap: .7rem; margin-top: 1.4rem; }
