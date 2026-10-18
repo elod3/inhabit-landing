@@ -112,6 +112,30 @@
     });
   });
 
+  /* minicurs · videoclipul: iframe-ul YouTube se încarcă doar când apeși play */
+  document.querySelectorAll('[data-yt]').forEach(box => {
+    box.querySelector('.video__play').addEventListener('click', () => {
+      const f = document.createElement('iframe');
+      f.src = `https://www.youtube-nocookie.com/embed/${box.dataset.yt}?autoplay=1&playsinline=1&rel=0`;
+      f.title = 'Videoclip arh. Alin Ionescu';
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      box.replaceChildren(f);
+    }, { once: true });
+  });
+
+  /* minicurs · etapele aprind lecțiile lor din bandă */
+  const strip = document.querySelector('[data-strip]');
+  if (strip) {
+    const cells = [...strip.children];
+    document.querySelectorAll('[data-stages] .stage').forEach(st => {
+      const on = () => { strip.classList.add('is-on'); cells.forEach(c => c.classList.toggle('is-hot', c.dataset.stage === st.dataset.stage)); };
+      const off = () => { strip.classList.remove('is-on'); cells.forEach(c => c.classList.remove('is-hot')); };
+      st.addEventListener('mouseenter', on); st.addEventListener('focus', on);
+      st.addEventListener('mouseleave', off); st.addEventListener('blur', off);
+    });
+  }
+
   /* minicurs · distribuie pe WhatsApp cu linkul paginii */
   document.querySelectorAll('[data-share-wa]').forEach(a => {
     const text = 'Uite un curs gratuit de la doi arhitecți, 22 de lecții despre teren, buget și constructor: ' + location.href.split('#')[0];
