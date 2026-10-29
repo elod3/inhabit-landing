@@ -1,0 +1,63 @@
+/* Stilul paginilor secundare: termeni, confidențialitate, mulțumim.
+   Aceiași tokens ca pagina principală, doar cât e nevoie pentru text. */
+:root{
+  --paper:#F4F0E5; --paper-2:#FBF9F3; --paper-3:#EBE5D7; --ink-block:#17161C;
+  --ink:#16151B; --ink-2:#5C574F; --ink-3:#968E82;
+  --peach:#F2C9AC; --brand:#F2C9AC; --brand-deep:#D9A57A;
+  --red:#E03A1C; --red-glow:224,58,28;
+  --line:#DED6C6; --draw-2:rgba(22,21,27,.085);
+  --r-lg:24px; --r-md:16px; --r-sm:10px; --r-pill:999px;
+  --maxw:820px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);font-size:17px;line-height:1.65;
+  font-family:"Hanken Grotesk","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+  background:var(--paper);
+  background-image:linear-gradient(var(--draw-2) 1px,transparent 1px),
+    linear-gradient(90deg,var(--draw-2) 1px,transparent 1px);
+  background-size:64px 64px;
+}
+.wrap{width:min(100% - 2.2rem,var(--maxw));margin-inline:auto}
+
+header{padding:1.4rem 0}
+header .inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r-pill);
+  padding:.55rem .6rem .55rem 1.2rem}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink);
+  font-family:"Archivo",sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.22em;
+  text-transform:uppercase}
+.brand img{width:26px;height:26px}
+.back{font-family:"DM Mono",monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-2);text-decoration:none;background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--r-pill);padding:.5rem 1rem;white-space:nowrap}
+.back:hover{border-color:var(--brand-deep)}
+
+main{padding-block:2rem 4rem}
+.eyebrow{font-family:"DM Mono",monospace;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 .6rem}
+h1{font-family:"Bricolage Grotesque","Archivo",sans-serif;font-weight:700;
+  font-size:clamp(1.9rem,5vw,2.9rem);line-height:1.08;letter-spacing:-.03em;margin:0 0 .5rem}
+h2{font-family:"Bricolage Grotesque","Archivo",sans-serif;font-weight:700;
+  font-size:clamp(1.15rem,2.6vw,1.45rem);line-height:1.25;letter-spacing:-.02em;margin:2.4rem 0 .6rem}
+h2 .n{color:var(--brand-deep);font-family:"DM Mono",monospace;font-size:.72em;margin-right:.5rem}
+p{margin:.85rem 0;color:var(--ink-2)}
+p.lede{font-size:1.05rem}
+strong{color:var(--ink)}
+a{color:var(--ink)}
+ul{margin:.85rem 0;padding-left:1.15rem;color:var(--ink-2)}
+li{margin:.4rem 0}
+.date{font-family:"DM Mono",monospace;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3)}
+.todo{color:var(--red);border-bottom:1px dashed currentColor}
+.card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:1.5rem 1.6rem;margin:1.6rem 0}
+.card p:first-child{margin-top:0}
+.card p:last-child{margin-bottom:0}
+.btn{display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;font-weight:600;
+  border-radius:var(--r-pill);padding:.85rem 1.5rem;font-size:1rem}
+.btn-primary{background:var(--red);color:#fff;box-shadow:0 0 30px rgba(var(--red-glow),.45)}
+.btn-ghost{background:var(--paper-2);border:1px solid var(--line);color:var(--ink)}
+footer{border-top:1px solid var(--line);padding-block:2rem 3rem;font-size:.86rem;color:var(--ink-3)}
+footer a{color:var(--ink-2)}
