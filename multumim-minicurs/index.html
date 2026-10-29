@@ -31,7 +31,7 @@ header .inner{background:rgba(29,27,24,.7);border-color:var(--linie-umbra)}
 .back{background:transparent;border-color:var(--linie-umbra);color:var(--pe-umbra-2)}
 
 .text{position:relative;z-index:2;flex:1;display:flex;align-items:center;justify-content:flex-end;
-  width:min(100% - 2.2rem,1240px);margin-inline:auto;padding-block:1rem 3rem}
+  width:min(100% - 2.2rem,1240px);margin-inline:auto;padding-block:.5rem 2rem}
 .coloana{width:min(100%,27rem)}
 
 .conf{display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem}
@@ -44,11 +44,11 @@ header .inner{background:rgba(29,27,24,.7);border-color:var(--linie-umbra)}
   color:var(--pe-umbra-2)}
 @media (prefers-reduced-motion:reduce){.conf .tick path{animation:none;stroke-dashoffset:0}}
 
-h1{color:var(--pe-umbra);margin:0}
+h1{color:var(--pe-umbra);margin:0;font-size:clamp(1.9rem,3.6vw,2.6rem)}
 .semnat{margin:.7rem 0 0;font-size:.9rem;color:var(--pe-umbra-3)}
 
-.pasi{margin-top:2rem;border-top:1px solid var(--linie-umbra)}
-.pas{display:grid;grid-template-columns:2rem 1fr;gap:0 .9rem;padding:1.1rem 0;
+.pasi{margin-top:1.4rem;border-top:1px solid var(--linie-umbra)}
+.pas{display:grid;grid-template-columns:2rem 1fr;gap:0 .9rem;padding:.85rem 0;
   border-bottom:1px solid var(--linie-umbra)}
 .pas>b{font-family:"DM Mono",monospace;font-size:.74rem;color:var(--peach);padding-top:.3rem}
 .pas h2{margin:0;color:var(--pe-umbra);font-size:1.12rem}
@@ -58,6 +58,14 @@ h1{color:var(--pe-umbra);margin:0}
 .pas a.grup{display:inline-block;margin-top:.6rem;background:var(--peach);color:var(--ink);
   border-radius:var(--r-pill);padding:.6rem 1.2rem;text-decoration:none;font-weight:600;font-size:.92rem}
 .pas a.grup:hover{background:#fff}
+
+.planif{margin-top:1.1rem;border:1px solid var(--linie-umbra);border-radius:var(--r-md);padding:1rem 1.1rem;
+  display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1rem}
+.planif p{margin:0;flex:1 1 14rem;font-size:.92rem;line-height:1.5;color:var(--pe-umbra-2)}
+.planif p b{color:var(--pe-umbra);font-weight:600}
+.planif a{border:1px solid var(--peach);color:var(--peach);border-radius:var(--r-pill);padding:.55rem 1.1rem;
+  text-decoration:none;font-weight:600;font-size:.9rem;white-space:nowrap}
+.planif a:hover{background:var(--peach);color:var(--ink)}
 
 .mic-jos{margin:1.2rem 0 0;font-size:.86rem;color:var(--pe-umbra-3)}
 .mic-jos a{color:var(--pe-umbra-2)}
@@ -127,6 +135,11 @@ footer a{color:var(--pe-umbra-2)}
             <a class="grup" href="https://www.facebook.com/groups/buildwise" target="_blank" rel="noopener">Grupul pe Facebook</a>
           </div>
         </div>
+      </div>
+
+      <div class="planif">
+        <p>Dacă vrei să vezi de câți metri pătrați ai nevoie pentru viitoarea ta casă, ți-am pregătit un exercițiu: <b>Planificatorul Casei Tale</b>.</p>
+        <a href="https://planificator.inhabitstudio.ro/">Vezi planificatorul</a>
       </div>
 
       <p class="mic-jos">N-a venit nimic? Scrie-ne la <a href="mailto:office@inhabitstudio.ro">office@inhabitstudio.ro</a>.</p>
