@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="assets/css/pagini.css">
 <style>
 /* Doar ce e în plus față de stilul paginilor secundare (clonă după planificator/multumim.html). */
-.conf{display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem}
+.conf{display:flex;align-items:center;gap:.7rem;margin-bottom:.6rem}
 .conf .tick{width:26px;height:26px;flex:none}
 .conf .tick path{fill:none;stroke:var(--red);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
   stroke-dasharray:1;stroke-dashoffset:1;animation:draw .5s .15s ease-out forwards}
@@ -23,7 +23,7 @@
   color:var(--ink-2)}
 @media (prefers-reduced-motion:reduce){.conf .tick path{animation:none;stroke-dashoffset:0}}
 
-.pasi{margin-top:2.6rem;border-top:1px solid var(--line)}
+.pasi{margin-top:2rem;border-top:1px solid var(--line)}
 .pas{display:grid;grid-template-columns:2.4rem 1fr;gap:0 1.2rem;padding:1.6rem 0;
   border-bottom:1px solid var(--line)}
 .pas>b{font-family:"DM Mono",monospace;font-size:.78rem;color:var(--brand-deep);padding-top:.35rem}
@@ -37,33 +37,19 @@
 .subiect{display:block;margin-top:.9rem;background:var(--paper-2);border:1px solid var(--line);
   border-radius:var(--r-md);padding:.9rem 1.1rem;font-size:.92rem;color:var(--ink-2)}
 .subiect b{display:block;color:var(--ink);font-weight:600}
-.subiect small{font-family:"DM Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--ink-3)}
 
-.lectii{margin:.7rem 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:.4rem}
-.lectii li{margin:0;background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r-pill);
-  padding:.3rem .8rem;font-size:.86rem;color:var(--ink-2)}
-
-.grup-box{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.4rem;margin-top:1rem;
-  background:var(--ink-block);border-radius:var(--r-md);padding:1.2rem 1.4rem}
-.grup-box p{margin:0;color:rgba(255,255,255,.78);font-size:.92rem;flex:1 1 15rem}
-.grup-box a{background:var(--peach);color:var(--ink);border-radius:var(--r-pill);
-  padding:.7rem 1.3rem;text-decoration:none;font-weight:600;font-size:.95rem;white-space:nowrap}
-.grup-box a:hover{background:#fff}
-
-.final{margin:2.8rem 0 0;background:var(--paper-2);border:1px solid var(--line);
+.final{margin:0;background:var(--paper-2);border:1px solid var(--line);
   border-radius:var(--r-lg);padding:.8rem .8rem 1.4rem;overflow:hidden}
 .final img{width:100%;height:auto;display:block;border-radius:var(--r-md)}
 .final figcaption{padding:1.3rem .8rem 0;display:grid;gap:.9rem}
-.final blockquote{margin:0;border-left:2px solid var(--red);padding-left:.9rem;
-  font-family:"Bricolage Grotesque","Archivo",sans-serif;font-weight:600;font-size:1.02rem;
-  line-height:1.35;color:var(--ink)}
+.final h1{margin:0}
 .final figcaption p{margin:0;font-size:.9rem;color:var(--ink-3)}
 .final figcaption p b{color:var(--ink-2);font-weight:600}
 @media (min-width:680px){
   .final figcaption{grid-template-columns:1fr auto;align-items:end;gap:1.4rem}
   .final figcaption p{text-align:right;white-space:nowrap}
 }
+.mic-jos{font-size:.9rem;color:var(--ink-3);margin-top:1.6rem}
 .foot-links{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;margin-top:.8rem}
 </style>
 </head>
@@ -79,54 +65,43 @@
 <main>
   <div class="wrap">
 
-    <div class="conf">
-      <svg class="tick" viewBox="0 0 26 26" aria-hidden="true">
-        <circle cx="13" cy="13" r="12"/>
-        <path d="M7 13.4 L11.2 17.4 L19 8.6" pathLength="1"/>
-      </svg>
-      <span>Înscriere confirmată</span>
-    </div>
-
-    <h1>Te-ai înscris cu succes.</h1>
-    <p class="lede">Ai făcut primul pas spre casa visurilor tale. Prima lecție din mini-curs a plecat
-      deja spre adresa ta de email.</p>
+    <figure class="final">
+      <img src="assets/img/alin-multumesc.webp" width="1280" height="800" fetchpriority="high"
+           alt="Arh. Alin George Ionescu, Inhabit Studio">
+      <figcaption>
+        <div>
+          <div class="conf">
+            <svg class="tick" viewBox="0 0 26 26" aria-hidden="true">
+              <circle cx="13" cy="13" r="12"/>
+              <path d="M7 13.4 L11.2 17.4 L19 8.6" pathLength="1"/>
+            </svg>
+            <span>Înscriere confirmată</span>
+          </div>
+          <h1>Mulțumim că te-ai înscris.</h1>
+        </div>
+        <p><b>arh. Alin George Ionescu</b> &amp; <b>arh. Anca Oprea</b></p>
+      </figcaption>
+    </figure>
 
     <div class="pasi">
 
       <div class="pas">
         <b>01</b>
         <div>
-          <h2>Caută Lecția 1 în email</h2>
-          <p>Verifică-ți emailul, inclusiv folderele Spam și Promoții. Dacă mesajul a ajuns acolo,
-            mută-l în Inbox, ca lecțiile următoare să vină direct la tine.</p>
+          <h2>Lecția 1 e în email</h2>
+          <p>Nu e în Inbox? Caută în Spam sau Promoții.</p>
           <span class="subiect">
-            <small>Așa arată în inbox</small>
             <b>Ep. 1 – Bine ai venit! primul pas spre casa ta..</b>
-            de la Alin G. Ionescu · alin@inhabitstudio.ro
+            de la alin@inhabitstudio.ro
           </span>
-          <p class="mic">Adaugă adresa noastră de email în contactele tale. Așa te asiguri că
-            informațiile esențiale nu ajung în Spam.</p>
         </div>
       </div>
 
       <div class="pas">
         <b>02</b>
         <div>
-          <h2>O lecție pe zi, dimineața</h2>
-          <p>De mâine primești câte un email pe zi. Pas cu pas, de la alegerea terenului până
-            la ultimul pas:</p>
-          <ul class="lectii">
-            <li>terenul „ieftin”</li>
-            <li>actele</li>
-            <li>arhitectul</li>
-            <li>constructorul</li>
-            <li>autorizația</li>
-            <li>bugetul</li>
-            <li>ferestre</li>
-            <li>încălzire</li>
-            <li>finisaje</li>
-          </ul>
-          <p class="mic">Citește-le pe rând, în ritmul în care vin. Fiecare lecție se leagă de cea dinainte.</p>
+          <h2>Câte o lecție pe zi</h2>
+          <p>Vine dimineața, de mâine.</p>
         </div>
       </div>
 
@@ -134,34 +109,13 @@
         <b>03</b>
         <div>
           <h2>Intră în grupul BuildWise</h2>
-          <p>Acolo poți pune întrebări și afli primul când organizăm webinarii și întâlniri online.</p>
-          <div class="grup-box">
-            <p>Grupul de pe Facebook al celor care își construiesc casa cu noi.</p>
-            <a href="https://www.facebook.com/groups/buildwise" target="_blank" rel="noopener">Intră în grup</a>
-          </div>
+          <p><a class="btn btn-ghost" href="https://www.facebook.com/groups/buildwise" target="_blank" rel="noopener">Grupul pe Facebook</a></p>
         </div>
       </div>
 
     </div>
 
-    <div class="card">
-      <p><strong>N-a venit nimic după 10 minute?</strong> Scrie-ne la
-        <a href="mailto:office@inhabitstudio.ro">office@inhabitstudio.ro</a> și îți trimitem noi lecția.</p>
-      <p>Iar dacă vrei să treci planurile tale prin ochii unui arhitect, poți
-        <a href="https://inhabitstudio.ro/servicii-de-consultanta/#ProiectareCasa">rezerva o consultanță</a>.
-        Nu e un pas obligatoriu; mini-cursul stă în picioare și singur.</p>
-    </div>
-
-    <figure class="final">
-      <img src="assets/img/alin-multumesc.webp" width="1280" height="800" loading="lazy"
-           alt="Arh. Alin George Ionescu, Inhabit Studio">
-      <figcaption>
-        <blockquote>„Cred în case făcute cu suflet și sens pentru oameni, eficiente și
-          confortabile, care să te odihnească."</blockquote>
-        <p><b>arh. Alin George Ionescu</b> &amp; <b>arh. Anca Oprea</b><br>
-          Inhabit Studio</p>
-      </figcaption>
-    </figure>
+    <p class="mic-jos">N-a venit nimic? Scrie-ne la <a href="mailto:office@inhabitstudio.ro">office@inhabitstudio.ro</a>.</p>
 
   </div>
 </main>
