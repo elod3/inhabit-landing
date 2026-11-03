@@ -80,6 +80,9 @@ mark { background: linear-gradient(transparent 58%, rgba(226,176,23,.55) 58%); c
 .signup__msg:empty { display: none; }
 .signup__msg { font-size: .9rem; margin-top: .6rem; }
 
+.hero-cta { margin-top: 1.6rem; max-width: 34rem; }
+.hero-cta .btn { display: inline-block; }
+
 /* secțiuni */
 .sec { padding: 5rem 0; border-top: 1px solid var(--line); }
 .sec--tint { background: var(--paper-2); }
@@ -204,6 +207,7 @@ mark { background: linear-gradient(transparent 58%, rgba(226,176,23,.55) 58%); c
   .person img { max-width: 14rem; }
   .sec { padding: 3.5rem 0; }
   .signup .btn { flex: 1 1 100%; }
+  .hero-cta .btn { display: block; text-align: center; }
   .top nav { gap: 0 1rem; line-height: 1.5; }
   .top nav a { padding-block: .35rem; }
   .foot a { display: inline-block; padding-block: .35rem; }
