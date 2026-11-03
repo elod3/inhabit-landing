@@ -6,7 +6,7 @@ Előd predă proiectul lui Luca pentru că laptopul lui e la reparat până mâi
 - Sursa: `site/minicurs.html`, `site/assets/css/minicurs.css`, `site/assets/js/main.js`.
 - Pagina de mulțumire (live): sursa în `multumim-minicurs/`, pe server în `public_html/multumim-minicurs/`.
 - Previzualizare: ramura `gh-pages`, publicată pe GitHub Pages.
-  - De verificat acum: https://elod3.github.io/inhabit-landing/v12/minicurs.html (v9 cu fundaluri alternate, „Cât poți economisi” înaintea lui „Ce vei învăța”, formular pe galben cald)
+  - De verificat acum: https://elod3.github.io/inhabit-landing/v12/minicurs.html (v9 cu fundaluri alternate, „Cât poți economisi” înaintea lui „Ce vei învăța”, formular pe crem deschis)
   - `/v9/` = baza aleasă. `/v10/`, `/v11/` = variante respinse (negru, acoperiș, animații).
   - `/v7/` = ce a primit Alin la 12:12.
   - Rădăcina `/minicurs.html` = iterația de dinainte de corecturi. `/v3/`, `/v4/` = versiuni păstrate la cererea lui.
