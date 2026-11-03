@@ -108,9 +108,9 @@ mark { background: linear-gradient(transparent 58%, rgba(226,176,23,.55) 58%); c
 .more[open] summary::before { transform: rotate(90deg); }
 .more summary:hover { box-shadow: inset 0 -2px var(--ink); }
 .more summary:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
-.more__list { list-style: none; margin: 1.2rem 0 0; padding: 0; }
-.more__list li { position: relative; padding: .45rem 0 .45rem 1.8rem; }
-.more__list li::before { content: "✔"; position: absolute; left: 0; color: var(--yellow); font-weight: 700; -webkit-text-stroke: .4px var(--ink); }
+.more__list { margin: 1.2rem 0 0; padding-left: 1.2rem; }
+.more__list li { margin-bottom: .4rem; }
+.more__list li::marker { color: var(--yellow); }
 @media (prefers-reduced-motion: reduce) { .more summary::before { transition: none; } }
 
 /* economii */
@@ -127,11 +127,12 @@ mark { background: linear-gradient(transparent 58%, rgba(226,176,23,.55) 58%); c
 .how a { color: var(--ink); font-weight: 600; }
 
 /* calculatorul, din pagina planificatorului */
+.calc { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 3rem; align-items: center; }
 .calc__q { font-weight: 600; margin-top: 1.2rem; }
 .calc__list { margin: .8rem 0 1.2rem; padding-left: 1.2rem; }
 .calc__list li { margin-bottom: .4rem; }
 .calc__list li::marker { color: var(--yellow); }
-.calc__fig { margin: 2rem 0 0; }
+.calc__fig { margin: 0; }
 .calc__fig img { width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--line); }
 
 /* recenzii: capturile lor, cum sunt */
@@ -191,5 +192,6 @@ mark { background: linear-gradient(transparent 58%, rgba(226,176,23,.55) 58%); c
   .sec { padding: 3.5rem 0; }
   .signup .btn { flex: 1 1 100%; }
   .top nav { gap: 1rem; }
+  .calc { grid-template-columns: 1fr; gap: 2rem; }
   .reviews { columns: 1; max-width: 26rem; }
 }
