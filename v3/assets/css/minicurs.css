@@ -1,0 +1,177 @@
+/* Minicurs — varianta de citit: hârtie deschisă, text mare, o coloană.
+   Culorile și Poppins vin din fișa lui Luca; galbenul e doar marcaj și buton. */
+:root {
+  --paper: #F4F0E8;
+  --paper-2: #EBE5D9;
+  --ink: #16130F;
+  --muted: #554F46;
+  --line: #D6CEBF;
+  --yellow: #E2B017;
+  --night: #0A0908;
+  --cream: #F3EFE8;
+  --measure: 40rem;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 400 1.125rem/1.7 Poppins, sans-serif;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3, h4 { line-height: 1.2; margin: 0; letter-spacing: -0.01em; }
+p { margin: 0; }
+.wrap { width: min(100% - 2rem, 70rem); margin-inline: auto; }
+.col { max-width: var(--measure); }
+mark { background: linear-gradient(transparent 58%, rgba(226,176,23,.55) 58%); color: inherit; padding: 0 .1em; }
+
+/* bara */
+.top { border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 4rem; }
+.brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; font-size: .95rem; }
+.brand b { font-weight: 700; } .brand em { font-style: normal; font-weight: 400; }
+.top nav { display: flex; gap: 1.5rem; font-size: .95rem; }
+.top nav a { text-decoration: none; }
+.top nav a[aria-current] { font-weight: 600; box-shadow: inset 0 -2px var(--yellow); }
+.top nav a:hover { box-shadow: inset 0 -2px var(--ink); }
+
+/* primul ecran */
+.hero { padding: 3.5rem 0 4.5rem; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) 19rem; gap: 4rem; align-items: start; }
+.kicker { font-size: .8rem; font-weight: 600; letter-spacing: .14em; color: var(--muted); margin-bottom: 1.2rem; }
+.hero h1 { font-size: clamp(2.1rem, 4.4vw, 3.4rem); font-weight: 700; max-width: 18ch; }
+.hero h1 span { font-weight: 400; }
+.hero .sub { font-size: 1.25rem; color: var(--muted); margin-top: 1rem; }
+.hero .hook { margin-top: 2rem; max-width: 34rem; }
+.video { position: relative; aspect-ratio: 9 / 16; border-radius: 6px; overflow: hidden; background: var(--night); }
+.video img { width: 100%; height: 100%; object-fit: cover; }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video__play {
+  position: absolute; inset: 0; margin: auto; width: 4.5rem; height: 4.5rem; border-radius: 50%;
+  border: 0; background: var(--yellow); cursor: pointer; transition: transform .2s ease-out;
+}
+.video__play { display: grid; place-items: center; }
+.video__play span { width: 0; height: 0; border-left: 1.1rem solid var(--night); border-block: .7rem solid transparent; transform: translateX(.15rem); }
+.video__play:hover { transform: scale(1.06); }
+.video__play:focus-visible { outline: 3px solid var(--cream); outline-offset: 3px; }
+
+/* formular */
+.signup { margin-top: 1.6rem; max-width: 34rem; }
+.signup label { display: block; font-weight: 600; font-size: 1rem; margin-bottom: .5rem; }
+.signup__row { display: flex; gap: .5rem; flex-wrap: wrap; }
+.signup input {
+  flex: 1 1 14rem; min-width: 0; font: inherit; font-size: 1rem; padding: .85rem 1rem;
+  border: 1.5px solid var(--ink); border-radius: 4px; background: #fff; color: var(--ink);
+}
+.signup input:focus { outline: 3px solid var(--yellow); outline-offset: 1px; }
+.btn {
+  font: 600 1rem/1 Poppins, sans-serif; padding: 1rem 1.4rem; border-radius: 4px; cursor: pointer;
+  border: 1.5px solid var(--ink); background: var(--yellow); color: var(--night); text-decoration: none;
+  transition: background-color .15s, transform .15s;
+}
+.btn:hover { background: #f0c22c; }
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.fine { font-size: .9rem; color: var(--muted); margin-top: .6rem; }
+.signup__msg:empty { display: none; }
+.signup__msg { font-size: .9rem; margin-top: .6rem; }
+
+/* secțiuni */
+.sec { padding: 5rem 0; border-top: 1px solid var(--line); }
+.sec--tint { background: var(--paper-2); }
+.sec h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 700; margin-bottom: 1.6rem; }
+.sec .intro { margin-bottom: 2rem; }
+.split { display: grid; grid-template-columns: 16rem minmax(0, 1fr); gap: 3rem; }
+.split > h2 { margin: 0; }
+
+/* cuprinsul: ce vei învăța */
+.toc { list-style: none; margin: 0; padding: 0; counter-reset: t; }
+.toc li { padding: 1.3rem 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .3rem 2rem; }
+.toc li:first-child { border-top: 1px solid var(--line); }
+.toc b { font-weight: 600; display: block; font-size: 1.2rem; line-height: 1.4; }
+.toc p { color: var(--muted); grid-column: 1; }
+.toc .pg { grid-column: 2; grid-row: 1 / span 2; align-self: start; font-size: .85rem; font-weight: 600; white-space: nowrap; padding: .2rem .6rem; border: 1px solid var(--ink); border-radius: 3px; }
+
+/* economii */
+.save { list-style: none; margin: 0; padding: 0; }
+.save li { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 2rem; padding: 1.6rem 0; border-top: 1px solid var(--line); }
+.save strong { font-size: 2.2rem; font-weight: 700; line-height: 1.1; }
+
+/* cum funcționează */
+.how { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 3rem; list-style: none; margin: 0; padding: 0; counter-reset: h; }
+.how li { counter-increment: h; padding: 1.5rem 0 1.5rem 3rem; border-top: 1px solid var(--line); position: relative; }
+.how li::before { content: counter(h); position: absolute; left: 0; top: 1.45rem; width: 2rem; height: 2rem; border-radius: 50%; background: var(--yellow); display: grid; place-items: center; font-weight: 700; font-size: .95rem; }
+.how h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: .35rem; }
+.how p { color: var(--muted); }
+
+/* șapte întrebări: bifezi ce știi */
+.qs { list-style: none; margin: 0 0 2rem; padding: 0; counter-reset: q; }
+.qs li { counter-increment: q; border-top: 1px solid var(--line); }
+.qs li:last-child { border-bottom: 1px solid var(--line); }
+.qs label { display: grid; grid-template-columns: 2rem auto minmax(0, 1fr); gap: 1rem; align-items: start; padding: 1rem 0; cursor: pointer; }
+.qs label::before { content: counter(q, decimal-leading-zero); font-size: .9rem; font-weight: 600; color: var(--muted); padding-top: .15rem; }
+.qs input { appearance: none; width: 1.5rem; height: 1.5rem; margin: .15rem 0 0; border: 1.5px solid var(--ink); border-radius: 3px; background: #fff; cursor: pointer; display: grid; place-items: center; }
+.qs input::after { content: ""; width: .45rem; height: .8rem; border: solid var(--night); border-width: 0 2.5px 2.5px 0; transform: rotate(45deg) translate(-1px, -1px) scale(0); transition: transform .15s ease-out; }
+.qs input:checked { background: var(--yellow); }
+.qs input:checked::after { transform: rotate(45deg) translate(-1px, -1px) scale(1); }
+.qs input:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.qs input:checked + span { color: var(--muted); }
+.qs-out { font-size: 1.2rem; }
+
+/* recenzii: capturile lor, cum sunt */
+.reviews { display: flex; align-items: flex-start; gap: 1rem; overflow-x: auto; padding: 0 max(1rem, (100% - 70rem) / 2) 1rem; scroll-snap-type: x mandatory; scroll-padding-inline: max(1rem, (100% - 70rem) / 2); scrollbar-width: thin; }
+.reviews a { flex: 0 0 auto; width: 17rem; scroll-snap-align: start; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); background: #111; }
+.reviews img { width: 100%; height: auto; }
+.reviews a:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.hint { font-size: .9rem; color: var(--muted); margin-top: .8rem; }
+
+/* echipa */
+.team-intro { margin-bottom: 3rem; }
+.person { display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: 3rem; padding: 2.5rem 0; border-top: 1px solid var(--line); }
+.person img { align-self: start; height: auto; width: 100%; aspect-ratio: 700 / 770; object-fit: cover; border-radius: 6px; background: var(--paper-2); }
+.person h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+.person ul { margin: 0 0 1rem; padding-left: 1.2rem; }
+.person li { margin-bottom: .4rem; }
+.person li::marker { color: var(--yellow); }
+.person details summary { cursor: pointer; font-weight: 600; display: inline-block; box-shadow: inset 0 -2px var(--yellow); list-style: none; }
+.person details summary::-webkit-details-marker { display: none; }
+.person details[open] summary { margin-bottom: 1rem; }
+.person details p + p { margin-top: 1rem; }
+
+/* finalul: înscrierea */
+.end { background: var(--night); color: var(--cream); padding: 5rem 0 4rem; }
+.end h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 700; margin-bottom: 1rem; }
+.end p { color: #CFC8BC; }
+.end .signup label { color: var(--cream); margin-top: 2rem; }
+.end .signup input { border-color: var(--cream); }
+.end .btn { border-color: var(--yellow); }
+.end .btn:focus-visible { outline-color: var(--cream); }
+.end .fine { color: #A8A196; }
+.end .fine a { color: var(--cream); }
+.share { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #2A2621; display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
+.share span { flex-basis: 100%; color: var(--cream); font-weight: 600; }
+.btn--line { background: transparent; color: var(--cream); border-color: #5A534A; }
+.btn--line:hover { background: #1C1915; }
+
+.foot { background: var(--night); color: #A8A196; font-size: .9rem; border-top: 1px solid #2A2621; padding: 2rem 0 2.5rem; }
+.foot .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; }
+.foot ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 1.2rem; }
+.foot a { color: var(--cream); text-decoration: none; }
+.foot a:hover { text-decoration: underline; }
+
+@media (max-width: 820px) {
+  body { font-size: 1.0625rem; }
+  .hero { padding-top: 2rem; }
+  .hero .wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero .video { max-width: 17rem; }
+  .split, .save li, .person { grid-template-columns: 1fr; gap: 1rem; }
+  .split > h2 { margin-bottom: .6rem; }
+  .how { grid-template-columns: 1fr; }
+  .toc li { grid-template-columns: 1fr; }
+  .toc .pg { grid-column: 1; grid-row: auto; justify-self: start; margin-top: .4rem; }
+  .person img { max-width: 14rem; }
+  .sec { padding: 3.5rem 0; }
+  .signup .btn { flex: 1 1 100%; }
+  .top nav { gap: 1rem; }
+}
