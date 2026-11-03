@@ -11,6 +11,8 @@
   --cream: #F3EFE8;
   --measure: 40rem;
   --gutter: clamp(1.2rem, 5.6vw, 4.8rem);
+  --overhang: 6rem;
+  --roof: clamp(3rem, 8vw, 7.5rem);
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
@@ -38,14 +40,16 @@ mark { background: linear-gradient(transparent 58%, rgba(226,176,23,.55) 58%); c
 .top nav a:hover { box-shadow: inset 0 -2px var(--ink); }
 
 /* primul ecran */
-.hero { padding: 3.5rem 0 4.5rem; }
-.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) 19rem; gap: 4rem; align-items: start; }
+.hero { padding: 3.5rem 0 0; position: relative; z-index: 1; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) 21rem; gap: 4rem; align-items: start; }
 .kicker { font-size: .8rem; font-weight: 600; letter-spacing: .14em; color: var(--muted); margin-bottom: 1.2rem; }
 .hero h1 { font-size: clamp(2.1rem, 4.4vw, 3.4rem); font-weight: 700; max-width: 18ch; }
 .hero h1 span { font-weight: 400; }
 .hero .sub { font-size: 1.25rem; color: var(--muted); margin-top: 1rem; }
 .hero .hook { margin-top: 2rem; max-width: 34rem; }
-.video { position: relative; aspect-ratio: 9 / 16; border-radius: 6px; overflow: hidden; background: var(--night); }
+/* clipul coboară peste coama acoperișului și leagă primul ecran de secțiunea următoare */
+.hero .video { margin-bottom: calc(-1 * var(--overhang)); }
+.video { position: relative; z-index: 1; aspect-ratio: 9 / 16; border-radius: 6px; overflow: hidden; background: var(--night); }
 .video img { width: 100%; height: 100%; object-fit: cover; }
 .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .video__play {
@@ -84,10 +88,26 @@ mark { background: linear-gradient(transparent 58%, rgba(226,176,23,.55) 58%); c
 .hero-cta .btn { display: inline-block; }
 
 /* secțiuni */
-.sec { padding: 5rem 0; border-top: 1px solid var(--line); }
+/* Fiecare schimbare de subiect e și o schimbare de culoare: hârtie, noapte, muștar.
+   Variabilele se rescriu pe secțiune, deci liniile și textul secundar urmează fundalul. */
+.sec { padding: 5rem 0; position: relative; }
 .sec--tint { background: var(--paper-2); }
-.sec--save { padding-bottom: 2.5rem; }
-.sec--save + .sec { padding-top: 3rem; }
+.sec--night { --ink: var(--cream); --muted: #BDB5A7; --line: #37312A; background: var(--night); color: var(--cream); }
+.sec--must { --muted: #3B3010; --line: rgba(10, 9, 8, .28); background: var(--yellow); color: var(--night); }
+/* marginea de sus a secțiunii e profilul unui acoperiș, cu coama sub clip */
+.sec--roof { margin-top: calc(var(--roof) * -.45); padding-top: calc(var(--overhang) + var(--roof) + 3.5rem); background: none; }
+.sec--roof::before, .end::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; background: var(--night);
+  --ridge: min(calc(50% + 24.25rem), calc(100% - var(--gutter) - 10.5rem));
+  clip-path: polygon(0 var(--roof), var(--ridge) 0, 100% calc(var(--roof) * .55), 100% 100%, 0 100%);
+}
+/* formularul de la final stă sub același acoperiș, cu coama pe partea cealaltă */
+.end::before { --ridge: 30%; }
+main { isolation: isolate; }
+.sec--night mark { background: linear-gradient(transparent 58%, rgba(226,176,23,.5) 58%); }
+.sec--night a:not(.btn) { color: var(--cream); }
+.sec--must strong { font-size: clamp(2.4rem, 4.4vw, 3.2rem); }
+.sec--must .save li:first-child { border-top: 0; }
 .sec h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 700; margin-bottom: 1.6rem; }
 .sec .intro { margin-bottom: 2rem; }
 .split { display: grid; grid-template-columns: 16rem minmax(0, 1fr); gap: 3rem; }
@@ -99,6 +119,7 @@ mark { background: linear-gradient(transparent 58%, rgba(226,176,23,.55) 58%); c
 .toc li:first-child { border-top: 1px solid var(--line); }
 .toc b { font-weight: 600; display: block; font-size: 1.2rem; line-height: 1.4; }
 .toc p { color: var(--muted); grid-column: 1; }
+.sec--night .toc .pg { border-color: var(--yellow); color: var(--yellow); }
 .toc .pg { grid-column: 2; grid-row: 1 / span 2; align-self: start; font-size: .85rem; font-weight: 600; white-space: nowrap; padding: .2rem .6rem; border: 1px solid var(--ink); border-radius: 3px; }
 
 .toc-hook { margin-bottom: 1.6rem; }
@@ -174,7 +195,7 @@ mark { background: linear-gradient(transparent 58%, rgba(226,176,23,.55) 58%); c
 .person details p + p { margin-top: 1rem; }
 
 /* finalul: înscrierea */
-.end { background: var(--night); color: var(--cream); padding: 5rem 0 4rem; }
+.end { position: relative; color: var(--cream); padding: calc(var(--roof) + 3.5rem) 0 4rem; }
 .end h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 700; margin-bottom: 1rem; }
 .end p { color: #CFC8BC; }
 .end .signup label { color: var(--cream); margin-top: 2rem; }
@@ -199,6 +220,7 @@ mark { background: linear-gradient(transparent 58%, rgba(226,176,23,.55) 58%); c
   .hero { padding-top: 2rem; }
   .hero .wrap { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
   .hero .video { width: 100%; max-width: 17rem; justify-self: center; }
+  :root { --overhang: 5rem; }
   .split, .save li, .person { grid-template-columns: 1fr; gap: 1rem; }
   .split > h2 { margin-bottom: .6rem; }
   .how { grid-template-columns: 1fr; }
@@ -206,6 +228,8 @@ mark { background: linear-gradient(transparent 58%, rgba(226,176,23,.55) 58%); c
   .toc .pg { grid-column: 1; grid-row: auto; justify-self: start; margin-top: .4rem; }
   .person img { max-width: 14rem; }
   .sec { padding: 3.5rem 0; }
+  .sec--roof { margin-top: 0; padding-top: calc(var(--overhang) + var(--roof) + 2.5rem); }
+  .sec--roof::before { --ridge: 50%; }
   .signup .btn { flex: 1 1 100%; }
   .hero-cta .btn { display: block; text-align: center; }
   .top nav { gap: 0 1rem; line-height: 1.5; }

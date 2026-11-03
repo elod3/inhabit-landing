@@ -6,7 +6,8 @@ Előd predă proiectul lui Luca pentru că laptopul lui e la reparat până mâi
 - Sursa: `site/minicurs.html`, `site/assets/css/minicurs.css`, `site/assets/js/main.js`.
 - Pagina de mulțumire (live): sursa în `multumim-minicurs/`, pe server în `public_html/multumim-minicurs/`.
 - Previzualizare: ramura `gh-pages`, publicată pe GitHub Pages.
-  - De verificat acum: https://elod3.github.io/inhabit-landing/v9/minicurs.html
+  - De verificat acum: https://elod3.github.io/inhabit-landing/v10/minicurs.html (secțiuni pe culori diferite, acoperișul sub clip)
+  - `/v9/` = iterația de dinainte.
   - `/v7/` = ce a primit Alin la 12:12.
   - Rădăcina `/minicurs.html` = iterația de dinainte de corecturi. `/v3/`, `/v4/` = versiuni păstrate la cererea lui.
 - Feedbackul lui Alin: https://docs.google.com/document/d/19dC_bKLlLdr8AsUHE9WcMwCn4tkd8uxrhRGHOWMai84/edit (Tab 1 și Tab 2), plus conversația de pe WhatsApp.
@@ -17,8 +18,8 @@ Tab 1 și Tab 2 sunt făcute, plus ce a mai cerut Alin pe WhatsApp: fără fraza
 **Nimic din minicursul nou nu e pe inhabitstudio.ro.** Formularele din previzualizare nu trimit nimic.
 
 ## De făcut, în ordine
-1. Előd se uită pe `/v9/` și îi dă linkul lui Alin. Când zice Alin că e bine, `/v9/` se copiază peste rădăcină.
-2. Pe pagina de mulțumire live: butonul „Grupul pe Facebook” devine „Grupul pe WhatsApp”. Sursa e deja schimbată (`multumim-minicurs/index.html`), trebuie doar urcată.
+1. Előd se uită pe `/v10/` și îi dă linkul lui Alin. Când zice Alin că e bine, `/v10/` se copiază peste rădăcină.
+2. Pe pagina de mulțumire live: butonul „Grupul pe Facebook” devine „Grupul pe WhatsApp” și linkul „Mini-cursul” iese din footer. Sursa e deja schimbată (`multumim-minicurs/index.html`), trebuie doar urcată.
 3. Lansarea minicursului pe `inhabitstudio.ro/minicurs/`: formularul legat la Fluent Forms #3, redirecționare spre `/multumim-minicurs/`, `noindex` scos, og:image cu URL absolut. Vezi și `README.md`, „Înainte de lansare”.
 4. După minicurs: Alin vrea scoasă secțiunea cu calculatorul din pagina planificatorului și din titlul ei. Calculatorul devine gratis, planificatorul rămâne contra cost.
 
