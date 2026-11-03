@@ -112,8 +112,8 @@ main { isolation: isolate; }
 .hero .wrap > div:first-child { transform: translateY(calc(var(--q) * -2.5rem)); opacity: calc(1 - var(--q) * .7); }
 .hero .video { transform: translateY(calc(var(--q) * 3rem)) scale(calc(1 - var(--q) * .06)); }
 /* banii: soarele răsare din secțiunea neagră și umple ecranul; e cercul de muștar din portretele lor */
-.sec--sun { padding: 0; background: var(--night); --q: 0; }
-.sun { --drift: 3.5rem; padding: 5rem 0; clip-path: circle(calc(var(--p) * var(--p) * 150vmax) at 72% 0); }
+.sec--sun { padding: 0; margin-top: -1px; background: var(--night); --q: 0; }
+.sun { --drift: 3.5rem; padding: 5rem 0; clip-path: circle(calc(var(--p) * var(--p) * 150vmax) at 72% 14rem); }
 /* coboară mai puțin decât spațiul de sub text, ca foaia să nu acopere niciun rând */
 .sun > .wrap { transform: translateY(calc(var(--q) * var(--drift))); }
 /* foaia de hârtie urcă peste muștar */
@@ -262,7 +262,7 @@ main { isolation: isolate; }
   .person img { max-width: 14rem; }
   .sec { padding: 3.5rem 0; }
   .sec--sun { padding: 0; }
-  .sun { --drift: 1.5rem; padding: 3.5rem 0; clip-path: circle(calc(var(--p) * var(--p) * 170vmax) at 50% 0); }
+  .sun { --drift: 1.5rem; padding: 3.5rem 0; clip-path: circle(calc(var(--p) * var(--p) * 170vmax) at 50% 9rem); }
   .sec--aperture { clip-path: inset(calc((1 - var(--p)) * 20%) calc((1 - var(--p)) * 10%)); }
   .sec--roof { margin-top: 0; padding-top: calc(var(--overhang) + var(--roof) + 2.5rem); }
   .sec--roof::before { --ridge: 50%; }
