@@ -93,17 +93,50 @@ mark { background: linear-gradient(transparent 58%, rgba(226,176,23,.55) 58%); c
 .sec { padding: 5rem 0; position: relative; }
 .sec--tint { background: var(--paper-2); }
 .sec--night { --ink: var(--cream); --muted: #BDB5A7; --line: #37312A; background: var(--night); color: var(--cream); }
-.sec--must { --muted: #3B3010; --line: rgba(10, 9, 8, .28); background: var(--yellow); color: var(--night); }
+.sec--must { --ink: var(--night); --muted: #3B3010; --line: rgba(10, 9, 8, .28); background: var(--yellow); color: var(--night); }
 /* marginea de sus a secțiunii e profilul unui acoperiș, cu coama sub clip */
 .sec--roof { margin-top: calc(var(--roof) * -.45); padding-top: calc(var(--overhang) + var(--roof) + 3.5rem); background: none; }
 .sec--roof::before, .end::before {
   content: ""; position: absolute; inset: 0; z-index: -1; background: var(--night);
   --ridge: min(calc(50% + 24.25rem), calc(100% - var(--gutter) - 10.5rem));
-  clip-path: polygon(0 var(--roof), var(--ridge) 0, 100% calc(var(--roof) * .55), 100% 100%, 0 100%);
+  clip-path: polygon(0 var(--roof), var(--ridge) calc(var(--roof) * (1 - var(--p))), 100% calc(var(--roof) * (1 - .45 * var(--p))), 100% 100%, 0 100%);
 }
 /* formularul de la final stă sub același acoperiș, cu coama pe partea cealaltă */
 .end::before { --ridge: 30%; }
 main { isolation: isolate; }
+
+/* Tranzițiile merg cu scroll-ul. --p e 1 fără JS și cu „reduce motion”: starea finală, fără mișcare. */
+[data-film] { --p: 1; }
+/* primul ecran: camera se retrage, clipul coboară în casă */
+.hero { --q: 0; }
+.hero .wrap > div:first-child { transform: translateY(calc(var(--q) * -2.5rem)); opacity: calc(1 - var(--q) * .7); }
+.hero .video { transform: translateY(calc(var(--q) * 3rem)) scale(calc(1 - var(--q) * .06)); }
+/* banii: soarele răsare din secțiunea neagră și umple ecranul; e cercul de muștar din portretele lor */
+.sec--sun { padding: 0; background: var(--night); --q: 0; }
+.sun { --drift: 3.5rem; padding: 5rem 0; clip-path: circle(calc(var(--p) * var(--p) * 150vmax) at 72% 0); }
+/* coboară mai puțin decât spațiul de sub text, ca foaia să nu acopere niciun rând */
+.sun > .wrap { transform: translateY(calc(var(--q) * var(--drift))); }
+/* foaia de hârtie urcă peste muștar */
+.sec--sheet { z-index: 2; background: var(--paper); box-shadow: 0 -1.6rem 3.5rem rgba(10, 9, 8, calc(.2 * var(--p))); }
+/* calculatorul se ridică de pe masă până ajunge drept în fața ta */
+.calc__fig { perspective: 75rem; }
+.calc__fig img { transform-origin: 50% 100%; transform: rotateX(calc((1 - var(--p)) * 24deg)) scale(calc(.86 + .14 * var(--p))); }
+/* recenziile vin la viteze diferite, ca mesajele care se adună într-o conversație */
+.reviews--first a:nth-child(1) { transform: translateY(calc((1 - var(--p)) * 2.5rem)); }
+.reviews--first a:nth-child(2) { transform: translateY(calc((1 - var(--p)) * 7rem)); }
+.reviews--first a:nth-child(3) { transform: translateY(calc((1 - var(--p)) * 4.5rem)); }
+/* „De ce e gratuit?”: o singură propoziție, deschisă ca un cadru de film */
+.sec--aperture { clip-path: inset(calc((1 - var(--p)) * 32%) calc((1 - var(--p)) * 24%)); }
+/* portretele urcă în cadru */
+.person img[data-film] { clip-path: inset(calc((1 - var(--p)) * 45%) 0 0 0); transform: scale(calc(1.07 - .07 * var(--p))); }
+/* butonul de la final sare o dată, când ajungi la el: e singurul lucru de apăsat */
+.signup .btn.is-hop { animation: hop .85s cubic-bezier(.3, .7, .3, 1) .15s 1 both; transform-origin: 50% 100%; }
+@keyframes hop {
+  0%, 100% { transform: none; }
+  18% { transform: scale(1.08, .88); }
+  46% { transform: translateY(-.8rem) scale(.96, 1.05); }
+  72% { transform: scale(1.04, .95); }
+}
 .sec--night mark { background: linear-gradient(transparent 58%, rgba(226,176,23,.5) 58%); }
 .sec--night a:not(.btn) { color: var(--cream); }
 .sec--must strong { font-size: clamp(2.4rem, 4.4vw, 3.2rem); }
@@ -228,6 +261,9 @@ main { isolation: isolate; }
   .toc .pg { grid-column: 1; grid-row: auto; justify-self: start; margin-top: .4rem; }
   .person img { max-width: 14rem; }
   .sec { padding: 3.5rem 0; }
+  .sec--sun { padding: 0; }
+  .sun { --drift: 1.5rem; padding: 3.5rem 0; clip-path: circle(calc(var(--p) * var(--p) * 170vmax) at 50% 0); }
+  .sec--aperture { clip-path: inset(calc((1 - var(--p)) * 20%) calc((1 - var(--p)) * 10%)); }
   .sec--roof { margin-top: 0; padding-top: calc(var(--overhang) + var(--roof) + 2.5rem); }
   .sec--roof::before { --ridge: 50%; }
   .signup .btn { flex: 1 1 100%; }
