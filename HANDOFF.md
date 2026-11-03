@@ -6,17 +6,18 @@ Előd predă proiectul lui Luca pentru că laptopul lui e la reparat până mâi
 - Sursa: `site/minicurs.html`, `site/assets/css/minicurs.css`, `site/assets/js/main.js`.
 - Pagina de mulțumire (live): sursa în `multumim-minicurs/`, pe server în `public_html/multumim-minicurs/`.
 - Previzualizare: ramura `gh-pages`, publicată pe GitHub Pages.
-  - De verificat acum: https://elod3.github.io/inhabit-landing/v6/minicurs.html
-  - Rădăcina `/minicurs.html` = ce a văzut Alin ultima dată (fără corecturile din `/v6/`). `/v3/`, `/v4/` = versiuni păstrate la cererea lui.
+  - De verificat acum: https://elod3.github.io/inhabit-landing/v7/minicurs.html
+  - `/v6/` = ce a primit Alin la 11:39.
+  - Rădăcina `/minicurs.html` = iterația de dinainte de corecturi. `/v3/`, `/v4/` = versiuni păstrate la cererea lui.
 - Feedbackul lui Alin: https://docs.google.com/document/d/19dC_bKLlLdr8AsUHE9WcMwCn4tkd8uxrhRGHOWMai84/edit (Tab 1 și Tab 2), plus conversația de pe WhatsApp.
 
 ## Starea
-Tab 1 și Tab 2 sunt făcute, plus ce a mai cerut Alin pe WhatsApp: fără fraza cu achiziția Planificatorului, fără săgeți la recenzii, recenzii pe coloane, titlul lor pe un rând pe desktop, buline în lista care se deschide, calculatorul fără gol în stânga.
+Tab 1 și Tab 2 sunt făcute, plus ce a mai cerut Alin pe WhatsApp: fără fraza cu achiziția Planificatorului, fără săgeți la recenzii, recenzii pe coloane, titlul lor pe un rând pe desktop, buline în lista care se deschide, calculatorul fără gol în stânga. La 12:00, Alin a zis că recenziile pe coloane sunt prea încărcate și că vrea butonul: acum se văd 3, restul sub „Apasă pentru mai multe”. Textul lui e în ordinea trimisă de el.
 
 **Nimic din minicursul nou nu e pe inhabitstudio.ro.** Formularele din previzualizare nu trimit nimic.
 
 ## De făcut, în ordine
-1. Előd se uită pe `/v6/`. Dacă e bine: se copiază `/v6/` peste rădăcină și primește Alin linkul.
+1. Előd se uită pe `/v7/` și îi dă linkul lui Alin. Când zice Alin că e bine, `/v7/` se copiază peste rădăcină.
 2. Pe pagina de mulțumire live: butonul „Grupul pe Facebook” devine „Grupul pe WhatsApp”. Sursa e deja schimbată (`multumim-minicurs/index.html`), trebuie doar urcată.
 3. Lansarea minicursului pe `inhabitstudio.ro/minicurs/`: formularul legat la Fluent Forms #3, redirecționare spre `/multumim-minicurs/`, `noindex` scos, og:image cu URL absolut. Vezi și `README.md`, „Înainte de lansare”.
 4. După minicurs: Alin vrea scoasă secțiunea cu calculatorul din pagina planificatorului și din titlul ei. Calculatorul devine gratis, planificatorul rămâne contra cost.
