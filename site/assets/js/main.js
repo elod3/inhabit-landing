@@ -157,39 +157,6 @@
     move();
   }
 
-  /* minicurs · tranzițiile dintre secțiuni: fiecare element primește în --p cât a parcurs,
-     de la intrarea în ecran până la linia lui; cu „reduce motion” rămân pe starea finală */
-  const films = [...document.querySelectorAll('[data-film]')];
-  const lines = { roof: .55, sun: .3, sheet: .55, screen: .5, reviews: .45, aperture: .55, portrait: .6 };
-  if (films.length && !reduce) {
-    const hero = document.querySelector('.hero');
-    let busy = false;
-    const play = () => {
-      busy = false;
-      const h = hero.getBoundingClientRect();
-      hero.style.setProperty('--q', Math.min(1, Math.max(0, -h.top / h.height)).toFixed(3));
-      films.forEach(el => {
-        const line = lines[el.dataset.film];
-        const p = Math.min(1, Math.max(0, (1 - el.getBoundingClientRect().top / innerHeight) / (1 - line))).toFixed(3);
-        el.style.setProperty('--p', p);
-        // foaia care urcă împinge și secțiunea de sub ea
-        if (el.dataset.film === 'sheet') el.previousElementSibling.style.setProperty('--q', p);
-      });
-    };
-    addEventListener('scroll', () => { if (!busy) { busy = true; requestAnimationFrame(play); } }, { passive: true });
-    addEventListener('resize', play);
-    addEventListener('load', play);
-    play();
-
-    const hop = document.querySelector('.end .signup .btn');
-    if (hop && 'IntersectionObserver' in window) {
-      const io = new IntersectionObserver(([e]) => {
-        if (e.isIntersecting) { hop.classList.add('is-hop'); io.disconnect(); }
-      }, { rootMargin: '0px 0px -12% 0px' });
-      io.observe(hop);
-    }
-  }
-
   /* minicurs · distribuie pe WhatsApp cu linkul paginii */
   document.querySelectorAll('[data-share-wa]').forEach(a => {
     const text = 'Uite un curs gratuit de la doi arhitecți, 22 de lecții despre teren, buget și constructor: ' + location.href.split('#')[0];
