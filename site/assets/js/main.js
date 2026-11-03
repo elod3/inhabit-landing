@@ -157,25 +157,6 @@
     move();
   }
 
-  /* minicurs · recenziile se dau și din săgeți, nu doar cu trackpadul */
-  const revNav = document.querySelector('[data-reviews-nav]');
-  const revs = document.querySelector('.reviews');
-  if (revNav && revs) {
-    const [prev, next] = revNav.querySelectorAll('button');
-    const sync = () => {
-      prev.disabled = revs.scrollLeft < 4;
-      next.disabled = revs.scrollLeft + revs.clientWidth > revs.scrollWidth - 4;
-    };
-    revNav.hidden = false;
-    revNav.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
-      const card = revs.firstElementChild.getBoundingClientRect().width + 16;
-      revs.scrollBy({ left: b.dataset.dir * card, behavior: reduce ? 'auto' : 'smooth' });
-    }));
-    revs.addEventListener('scroll', sync, { passive: true });
-    addEventListener('resize', sync);
-    sync();
-  }
-
   /* minicurs · distribuie pe WhatsApp cu linkul paginii */
   document.querySelectorAll('[data-share-wa]').forEach(a => {
     const text = 'Uite un curs gratuit de la doi arhitecți, 22 de lecții despre teren, buget și constructor: ' + location.href.split('#')[0];
