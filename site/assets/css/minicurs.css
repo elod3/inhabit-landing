@@ -176,20 +176,20 @@ mark { background: linear-gradient(transparent 58%, rgba(226,176,23,.55) 58%); c
 .person details p + p { margin-top: 1rem; }
 
 /* finalul: înscrierea */
-/* formularul stă pe gri cald (ales de Alin), distribuirea și footerul pe crem deschis */
+/* formularul stă pe gri cald (ales de Alin), distribuirea și footerul pe culoarea secțiunii de deasupra formularului */
 .end { --line: rgba(22, 19, 15, .22); --muted: #4A4336; background: var(--warm-grey); color: var(--ink); padding: 5rem 0 4rem; }
 .end h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 700; margin-bottom: 1rem; }
 .end p { color: var(--muted); }
 .end .signup label { color: var(--ink); margin-top: 2rem; }
 .end .fine { color: var(--muted); }
 .end .fine a { color: var(--ink); }
-.share-band { background: var(--cream-light); padding: 3rem 0; }
+.share-band { background: var(--paper-2); padding: 3rem 0; }
 .share { display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
 .share span { flex-basis: 100%; color: var(--ink); font-weight: 600; }
 .btn--line { background: transparent; color: var(--ink); border-color: var(--ink); }
 .btn--line:hover { background: rgba(22, 19, 15, .08); }
 
-.foot { background: var(--cream-light); color: #4A4336; font-size: .9rem; border-top: 1px solid var(--line); padding: 2rem 0 2.5rem; }
+.foot { background: var(--paper-2); color: #4A4336; font-size: .9rem; border-top: 1px solid var(--line); padding: 2rem 0 2.5rem; }
 .foot .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; }
 .foot ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 1.2rem; }
 .foot a { color: var(--ink); text-decoration: none; }
