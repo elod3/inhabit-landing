@@ -1,0 +1,22 @@
+/* Doar pentru previzualizare: Alin alege fundalul secțiunii de înscriere. Nu merge la lansare. */
+.end { background: var(--end-bg, var(--cream-light)); transition: background-color .25s ease-out; }
+.fundaluri { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--line); }
+.fundaluri__titlu { margin: 0 0 .8rem; font-size: .95rem; font-weight: 600; color: var(--ink) !important; }
+.fundaluri__lista { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; }
+.fundaluri button {
+  font: 500 .92rem/1.2 Poppins, sans-serif; color: var(--ink); text-align: left;
+  min-height: 3.1rem; padding: .55rem .7rem; border: 1.5px solid var(--ink); border-radius: 4px;
+  background: var(--c); cursor: pointer; transition: transform .15s;
+}
+.fundaluri button:hover { transform: translateY(-1px); }
+.fundaluri button:active { transform: translateY(1px); }
+.fundaluri button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.fundaluri button b { font-weight: 700; margin-right: .3em; }
+.fundaluri button[aria-pressed="true"] { font-weight: 700; box-shadow: inset 0 -.4rem 0 var(--yellow), 0 0 0 1.5px var(--ink); }
+@media (max-width: 560px) {
+  .fundaluri__lista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fundaluri button:last-child { grid-column: 1 / -1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .end, .fundaluri button { transition: none; }
+}
