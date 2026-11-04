@@ -20,3 +20,10 @@
 @media (prefers-reduced-motion: reduce) {
   .end, .fundaluri button { transition: none; }
 }
+
+/* Footerul ia aceeași culoare ca secțiunea de înscriere, fără negru. */
+.foot { background: var(--end-bg, var(--cream-light)); color: #4A4336; border-top: 1px solid rgba(22, 19, 15, .22); transition: background-color .25s ease-out; }
+.foot a { color: var(--ink); }
+@media (prefers-reduced-motion: reduce) {
+  .foot { transition: none; }
+}

@@ -5,7 +5,7 @@
   if (!end || !buttons.length) return;
 
   function pick(button) {
-    end.style.setProperty('--end-bg', button.dataset.c);
+    document.documentElement.style.setProperty('--end-bg', button.dataset.c);
     buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b === button)); });
     try { localStorage.setItem('fundal-inscriere', button.dataset.c); } catch (e) {}
   }
