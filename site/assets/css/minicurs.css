@@ -137,6 +137,7 @@ mark { background: linear-gradient(transparent 58%, rgba(226,176,23,.55) 58%); c
 .calc__list { margin: .8rem 0 1.2rem; padding-left: 1.2rem; }
 .calc__list li { margin-bottom: .4rem; }
 .calc__list li::marker { color: var(--yellow); }
+.calc__btn { display: inline-block; margin-top: 1.2rem; }
 .calc__fig { margin: 0; }
 .calc__fig img { width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--line); }
 
