@@ -104,15 +104,34 @@
   /* minicurs · formularele de înscriere
      Pe inhabitstudio.ro le legăm de formularul existent (Fluent Forms #3) la lansare.
      Până atunci, local, nu trimit nimic nicăieri. */
+  /* înscrierea: merge direct în formularul Fluent Forms #3, iar FluentCRM pornește lecțiile */
   document.querySelectorAll('[data-signup]').forEach(form => {
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', async e => {
       e.preventDefault();
       const email = form.querySelector('input[type=email]');
-      if (!email.checkValidity()) { email.reportValidity(); return; }
+      const button = form.querySelector('button[type=submit]');
       const msg = form.querySelector('[data-signup-msg]');
-      form.classList.add('is-sent');
-      // TODO la lansare: trimitere reală către Fluent Forms; mesajul de mai jos e doar pentru varianta locală
-      if (msg) msg.textContent = 'Varianta locală: formularul se leagă de lista de emailuri când punem pagina pe inhabitstudio.ro.';
+      if (!email.checkValidity()) { email.reportValidity(); return; }
+      if (!/(^|\.)inhabitstudio\.ro$/.test(location.hostname)) {
+        if (msg) msg.textContent = 'Previzualizare: formularul trimite doar pe inhabitstudio.ro.';
+        return;
+      }
+      button.disabled = true;
+      if (msg) msg.textContent = '';
+      try {
+        const body = new URLSearchParams({
+          action: 'fluentform_submit',
+          form_id: '3',
+          data: new URLSearchParams({ __fluent_form_embded_post_id: '2673', _wp_http_referer: '/minicurs/', email: email.value.trim() }).toString(),
+        });
+        const res = await fetch('/wp-admin/admin-ajax.php?t=' + Date.now(), { method: 'POST', body, headers: { 'X-Requested-With': 'XMLHttpRequest' } });
+        const out = await res.json();
+        if (!res.ok || !out.success) throw new Error('refuzat');
+        location.href = (out.data && out.data.result && out.data.result.redirectUrl) || '/multumim-minicurs/';
+      } catch (err) {
+        button.disabled = false;
+        if (msg) msg.textContent = 'Nu s-a putut trimite. Verifică adresa și încearcă din nou, sau scrie-ne la office@inhabitstudio.ro.';
+      }
     });
   });
 
